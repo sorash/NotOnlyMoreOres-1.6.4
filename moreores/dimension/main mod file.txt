@@ -1,0 +1,47 @@
+public class {
+	
+    //dimension
+    public static Block TutorialDirt;
+    public static Block TutorialGrass;
+    public static Block TutorialStone;
+    public static BlockTutorialPortal TutorialPortal;
+    public static BlockTutorialFire TutorialFire;
+    public static Item TutorialFlintAndSteel;
+    public static Item TutorialPortalPlacer;
+    public static int DimID = 10;
+    public static BiomeGenBase TutorialBiome;
+
+@Init
+
+//dimension
+        TutorialFire = (BlockTutorialFire)new BlockTutorialFire(2008).setUnlocalizedName("fire_0");
+        TutorialPortal = (BlockTutorialPortal)new BlockTutorialPortal(2009).setUnlocalizedName("portal");
+        TutorialGrass = new BlockTutorialGrass(200).setUnlocalizedName("MoreOres:greenBlock");
+        TutorialDirt = new BlockTutorialDirt(201).setUnlocalizedName("MoreOres:blueBlock");
+        TutorialStone = new BlockTutorialStone(202).setUnlocalizedName("MoreOres:orangeBlock");
+        /** Items **/
+        TutorialFlintAndSteel = new ItemTutorialFlintAndSteel(3047).setUnlocalizedName("flintAndSteel");
+        TutorialPortalPlacer = new ItemPortalPlacer(3048).setUnlocalizedName("MoreOres:ironRod");
+        /** Register Blocks **/
+        GameRegistry.registerBlock(TutorialFire, "TutorialFire");
+        GameRegistry.registerBlock(TutorialPortal, "TutorialPortal");
+        GameRegistry.registerBlock(TutorialGrass, "TutorialGrass");
+        GameRegistry.registerBlock(TutorialDirt, "TutorialDirt");
+        GameRegistry.registerBlock(TutorialStone, "TutorialStone");
+        /** Register Items **/
+        GameRegistry.registerItem(TutorialFlintAndSteel, "TutorialFlintAndSteel");
+        GameRegistry.registerItem(TutorialPortalPlacer, "TutorialPortalPlacer");
+        /** Add In-Game Names **/
+        LanguageRegistry.addName(TutorialGrass, "Tutorial Grass");
+        LanguageRegistry.addName(TutorialDirt, "Tutorial Dirt");
+        LanguageRegistry.addName(TutorialStone, "Tutorial Stone");
+        LanguageRegistry.addName(TutorialFire, "Tutorial Fire");
+        LanguageRegistry.addName(TutorialPortal, "Tutorial Portal");
+        LanguageRegistry.addName(TutorialFlintAndSteel, "Tutorial Lighter");
+        LanguageRegistry.addName(TutorialPortalPlacer, "Portal Placer");
+        /**Register WorldProvider for Dimension **/
+        DimensionManager.registerProviderType(DimID, WorldProviderTuorial.class, true);
+        DimensionManager.registerDimension(DimID, DimID);
+        /** Biome's **/
+        TutorialBiome = new BiomeGenTutorial(125);
+        GameRegistry.registerWorldGenerator(new MainGen());
